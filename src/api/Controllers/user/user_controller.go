@@ -35,8 +35,8 @@ func GetUserByIdS(context *gin.Context){
 
 func Mostrar(context *gin.Context){
 
-	user := &Domain.User { ID: 123233}
-	user, apiError := user.Get();
+	user1 := &Domain.User { ID: 123233}
+	user, apiError := user1.Get();
 	if apiError != nil{
 		context.JSON(apiError.Status, apiError)
 		return

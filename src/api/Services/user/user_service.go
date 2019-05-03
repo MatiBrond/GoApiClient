@@ -46,10 +46,3 @@ func GetUserByIdSer(id int64) (*Domain.User, *Utils.ApiError){
 	return &user, nil
 }
 
-func Get(id int64) (*Domain.User){
-
-
-
-	Domain.User.Get()
-
-}
