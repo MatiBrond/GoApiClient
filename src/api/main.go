@@ -22,7 +22,7 @@ func main(){
 
 	router.GET("/ping", ping.Ping)
 	router.GET("/users/:id", user.GetUserByIdS)
-	router.GET("/mostrar", user.Mostrar)
+	router.GET("/mostrar/:id", user.Mostrar)
 
 	router.Run(port)
 }

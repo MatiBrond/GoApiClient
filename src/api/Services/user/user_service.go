@@ -46,3 +46,18 @@ func GetUserByIdSer(id int64) (*Domain.User, *Utils.ApiError){
 	return &user, nil
 }
 
+func GetUserByIdSe(id int64) (*Domain.User, *Utils.ApiError){
+
+
+	user := &Domain.User { ID: id}
+
+	if err := user.Get(); err != nil{
+		return nil, &Utils.ApiError{
+			Message: "Fallo en el servicio",
+			Status: http.StatusServiceUnavailable,
+		}
+	}
+
+
+	return user, nil
+}

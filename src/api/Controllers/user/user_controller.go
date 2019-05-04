@@ -2,7 +2,6 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mercadolibre/taller-go/src/api/Domain"
 	"github.com/mercadolibre/taller-go/src/api/Services/user"
 	"github.com/mercadolibre/taller-go/src/api/Utils"
 	"net/http"
@@ -35,12 +34,20 @@ func GetUserByIdS(context *gin.Context){
 
 func Mostrar(context *gin.Context){
 
-	user1 := &Domain.User { ID: 123233}
-	user, apiError := user1.Get();
+	id := context.Param(paramUserID)
+	userID, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		apiError := &Utils.ApiError{
+			Message: "Fatal URL",
+			Status: http.StatusBadRequest}
+		context.JSON(apiError.Status, apiError)
+		return
+	}
+	user, apiError := user.GetUserByIdSe(userID);
 	if apiError != nil{
 		context.JSON(apiError.Status, apiError)
 		return
 	}
-	context.JSON(200, &user)
+	context.JSON(200, user)
 }
 

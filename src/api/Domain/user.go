@@ -5,7 +5,7 @@ package Domain
 
 
 type User struct {
-	ID               int    `json:"id"`
+	ID               int64    `json:"id"`
 	Nickname         string `json:"nickname"`
 	RegistrationDate string `json:"registration_date"`
 	CountryID        string `json:"country_id"`
